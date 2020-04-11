@@ -3,9 +3,10 @@ html
     ul
       each approval in approvals
         li
-          h4(style=`background: ${approval.approvedBy ? "#00ff00" : "#dd0"};`)= `Command: ${approval.commandRequest.command}`
-          p= `Requester: ${approval.commandRequest.ip}`
-          p= `Received: ${new Date(approval.commandRequest.createdAt).toISOString()}`
+          h4(style=`background: ${approval.approvedBy ? "#0f0" : "#dd0"};`)= `Command: ${approval.commandRequest.command}`
+          pre(style="background: #ccc; padding: 8px;")
+            strong(style="display: block;")= "Request:"
+            code= JSON.stringify(approval.commandRequest, null, 2)
           pre(style="background: #ccc; padding: 8px;")
             strong(style="display: block;")= "Policy:"
             code= JSON.stringify(approval.policy, null, 2)

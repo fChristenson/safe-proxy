@@ -1,0 +1,6 @@
+{
+  "name": "cat",
+  "command": "cat",
+  "flags": [],
+  "needsApproval": true
+}

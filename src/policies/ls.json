@@ -1,0 +1,5 @@
+{
+  "name": "ls",
+  "command": "ls",
+  "flags": ["-al", "-l"]
+}

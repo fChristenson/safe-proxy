@@ -1,0 +1,18 @@
+html
+  body
+    ul
+      each approval in approvals
+        li
+          h4(style=`background: ${approval.approvedBy ? "#00ff00" : "#dd0"};`)= `Command: ${approval.commandRequest.command}`
+          p= `Requester: ${approval.commandRequest.ip}`
+          p= `Received: ${new Date(approval.commandRequest.createdAt).toISOString()}`
+          pre(style="background: #ccc; padding: 8px;")
+            strong(style="display: block;")= "Policy:"
+            code= JSON.stringify(approval.policy, null, 2)
+          p= `Approved by: ${approval.approvedBy}`
+          form(method="POST", action="/approve")
+            input(type="hidden", name="id", value=approval._id)
+            input(type="submit", value="Approve")
+          pre(style="background: #ccc; padding: 8px;")
+            strong(style="display: block;")= "Result:"
+            code= approval.result
